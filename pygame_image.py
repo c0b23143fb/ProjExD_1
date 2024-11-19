@@ -17,14 +17,13 @@ def main():
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-
-        screen.blit(bg_img, [0, 0]) #screen sarfaceに背景画像surfaceを貼り付ける
+        x = tmr%800 #練習6-2
+        screen.blit(bg_img, [-x, 0]) #screen sarfaceに背景画像surfaceを貼り付ける
         #(背景画像surface, 画面の位置) #問題3
         screen.blit(flykk_img, [300, 200]) #screen sarfaceにこうかとん画像surfaceを貼り付ける
         pg.display.update()
         tmr += 1        
         clock.tick(200) #FPS
-
 
 if __name__ == "__main__":
     pg.init()
