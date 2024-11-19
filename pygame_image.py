@@ -22,18 +22,19 @@ def main():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()
         x = -(tmr%3200)
+        rect_x = -1
+        rect_y = 0
 
         if key_lst[pg.K_UP]:
-            kk_rect.move_ip(0, -1)
+            rect_y = -1
         if key_lst[pg.K_DOWN]:
-            kk_rect.move_ip(0, +1)
+            rect_y = +1
         if key_lst[pg.K_LEFT]:
-            kk_rect.move_ip(-1, 0)
+            rect_x = -2 #左をおしたら2倍に
         if key_lst[pg.K_RIGHT]:
-            kk_rect.move_ip(+2, 0) #右をおしたら2倍に
-        
-        else:
-            kk_rect.move_ip(-1, 0) #何もしてない時に左に動く
+            rect_x = +1 
+
+        kk_rect.move_ip(rect_x, rect_y)
 
         screen.blit(bg_img, [x, 0]) #screen sarfaceに背景画像surfaceを貼り付ける
         #(背景画像surface, 画面の位置) #問題3
