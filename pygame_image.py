@@ -15,12 +15,13 @@ def main():
     flykk_img = pg.transform.flip(flykk_img, True, False) #左右反転 #(画像surface, 左右を反転させるか、上下を反転させるか)
     kk_rect = flykk_img.get_rect()
     kk_rect.center = 300, 200
-    tmr = 0
     
+    tmr = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()
+        x = -(tmr%3200)
 
         if key_lst[pg.K_UP]:
             kk_rect.move_ip(0, -1)
@@ -29,15 +30,17 @@ def main():
         if key_lst[pg.K_LEFT]:
             kk_rect.move_ip(-1, 0)
         if key_lst[pg.K_RIGHT]:
-            kk_rect.move_ip(+1, 0) 
-
-        x = -(tmr%3200)
+            kk_rect.move_ip(+2, 0) #右をおしたら2倍に
+        
+        else:
+            kk_rect.move_ip(-1, 0) #何もしてない時に左に動く
 
         screen.blit(bg_img, [x, 0]) #screen sarfaceに背景画像surfaceを貼り付ける
         #(背景画像surface, 画面の位置) #問題3
         screen.blit(bg_img2, [x+1600, 0])
         screen.blit(bg_img, [x+3200, 0])
         screen.blit(bg_img2, [x+4800, 0])
+
         screen.blit(flykk_img, kk_rect) #screen sarfaceにこうかとん画像surfaceを貼り付ける
         pg.display.update()
         tmr += 1        
