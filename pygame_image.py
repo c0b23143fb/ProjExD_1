@@ -23,7 +23,7 @@ def main():
         screen.blit(flykk_img, [300, 200]) #screen sarfaceにこうかとん画像surfaceを貼り付ける
         pg.display.update()
         tmr += 1        
-        clock.tick(10)
+        clock.tick(200) #FPS
 
 
 if __name__ == "__main__":
