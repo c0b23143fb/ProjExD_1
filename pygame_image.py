@@ -10,9 +10,9 @@ def main():
     screen = pg.display.set_mode((800, 600)) #surface
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg") #問題1 背景画像surfaceを作成する
-    flykk_img = pg.image.load("pg_bg.jpg") #問題2
+    flykk_img = pg.image.load("fig/3.png") 
     flykk_img = pg.transform.flip(flykk_img, True, False) #左右反転 #(画像surface, 左右を反転させるか、上下を反転させるか)
-    
+
     tmr = 0
     while True:
         for event in pg.event.get():
@@ -20,6 +20,7 @@ def main():
 
         screen.blit(bg_img, [0, 0]) #screen sarfaceに背景画像surfaceを貼り付ける
         #(背景画像surface, 画面の位置) #問題3
+        screen.blit(flykk_img, [300, 200]) #screen sarfaceにこうかとん画像surfaceを貼り付ける
         pg.display.update()
         tmr += 1        
         clock.tick(10)
